@@ -1,5 +1,5 @@
 import planetModel from '../models/planet-model.js';
-import cloudinary from '../config/cloudinaty.js';
+import cloudinary from '../config/cloudinary.js';
 import fs from 'fs'; // Para manejar archivos temporales
 class planetController {
     constructor() {

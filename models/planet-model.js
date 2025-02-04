@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import dbClient from "../config/dbclient.js"
+import dbClient from "../config/dbClient.js"
 class planetModel {
 
     async create(image) {
