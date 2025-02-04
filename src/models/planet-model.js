@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import dbclient from "../config/dbclient.js"
+import dbClient from "../config/dbclient.js"
 class planetModel {
 
     async create(image) {
@@ -14,13 +14,13 @@ class planetModel {
         const seconds = String(now.getSeconds()).padStart(2, '0');
         image.hour = `${hours}:${minutes}:${seconds}`;
     
-        const colecImages = dbclient.db.collection('images');
+        const colecImages = dbClient.db.collection('images');
         return await colecImages.insertOne(image);
     }
 
 
     async findByPlanetName(planetName,  order = 'asc') {
-        const colecImages = dbclient.db.collection('images');
+        const colecImages = dbClient.db.collection('images');
     
         const query = planetName ? { planetName: { $regex: new RegExp(planetName, 'i') } } : {};
     
@@ -36,17 +36,17 @@ class planetModel {
     
 
     async delete(id) {
-        const colecImages = dbclient.db.collection('images');
+        const colecImages = dbClient.db.collection('images');
         return await colecImages.deleteOne({_id: new ObjectId(id)});
     }
 
     async findById(id) {
-        const colecImages = dbclient.db.collection('images');
+        const colecImages = dbClient.db.collection('images');
         return await colecImages.findOne({ _id: new ObjectId(id) });
     }
 
     async updateFavorite(id, planetFavorite) {
-        const colecImages = dbclient.db.collection('images');
+        const colecImages = dbClient.db.collection('images');
         
         const result = await colecImages.updateOne(
             { _id: new ObjectId(id) },
