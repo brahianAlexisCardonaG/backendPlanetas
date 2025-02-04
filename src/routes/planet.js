@@ -1,5 +1,5 @@
 import express from 'express';
-import imagesController from '../controllers/images-controller.js';
+import planetController from '../controllers/planet-controller.js';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
@@ -20,10 +20,12 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-route.post('/save', upload.single('image'), imagesController.create);
+route.post('/save', upload.single('image'), planetController.create);
 
-route.get('/get-by-filters', imagesController.get);
+route.get('/get-by-filters', planetController.get);
 
-route.delete('/delete/:id', imagesController.delete);
+route.delete('/delete/:id', planetController.delete);
+
+route.patch('/update-favorite', planetController.updateFavorite);
 
 export default route;

@@ -1,6 +1,5 @@
-//import 'dotenv/config';
 import express from 'express';
-import routeImages from './routes/images.js';
+import routePlanet from './routes/planet.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
@@ -12,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-app.use('/images', routeImages);
+app.use('/planet', routePlanet);
 
 
 try {
